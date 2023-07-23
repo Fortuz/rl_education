@@ -11,27 +11,25 @@ K = 10
 class Action:
     def __init__(self, distribution=None):
         self.mean = np.random.randn()
-        self.distribution = distribution if distribution else np.random.choice(["normal", "constant", "uniform"], p=[1, 0, 0])
-        self.get_reward = self.generate_distribution()
+        self.distribution = distribution if distribution is not None else np.random.choice(["normal", "constant", "uniform"], p=[1, 0, 0])
     
-    def generate_distribution(self):
+    def get_reward(self):
         if self.distribution == "normal":
-            return lambda: np.random.randn() + self.mean
+            return np.random.randn() + self.mean
         elif self.distribution == "uniform":
-            return lambda: np.random.rand() + self.mean
+            return np.random.rand() + self.mean
         else:
-            return lambda: self.mean
+            return self.mean
 
 def simulate(strategies, runs=2000, time=1000):
-    actions = [Action() for _ in range(K)]
-    best_action = np.argmax([action.mean for action in actions])
-
     rewards = np.zeros((len(strategies), runs, time))
     best_action_choices = np.zeros(rewards.shape)
 
     for i, strategy in enumerate(strategies):
         print(f"Running strategy {i + 1}/{len(strategies)}...")
         for r in trange(runs):
+            actions = [Action() for _ in range(K)]
+            best_action = np.argmax([action.mean for action in actions])
             strategy.reset()
             for t in range(time):
                 action = strategy.act()
@@ -52,15 +50,15 @@ def plot_results(strategies, rewards, best_action_choices):
     plt.figure(figsize=(10, 20))
     plt.subplot(2,1,1)
 
-    for s, r in zip(strategies, rewards):
-        plt.plot(r, label=f"{s.name}")
+    for strategy, reward in zip(strategies, rewards):
+        plt.plot(reward, label=f"{strategy.name}")
     plt.xlabel('Steps')
     plt.ylabel('Average reward')
     plt.legend()
 
     plt.subplot(2,1,2)
-    for s, c in zip(strategies, best_action_choices):
-        plt.plot(c, label=f"{s.name}")
+    for strategy, choices in zip(strategies, best_action_choices):
+        plt.plot(choices, label=f"{strategy.name}")
     plt.xlabel('Steps')
     plt.ylabel('% Optimal action')
     plt.legend()
