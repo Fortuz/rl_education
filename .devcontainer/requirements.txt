@@ -1,3 +1,10 @@
 numpy
 matplotlib
 tqdm
+ipython
+jupyterlab
+ipywidgets
+gymnasium
+gymnasium[toy-text]
+gymnasium[box2d]
+gym-notebook-wrapper
