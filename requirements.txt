@@ -1,0 +1,8 @@
+numpy
+matplotlib
+seaborn
+tqdm
+gymnasium
+gymnasium[toy-text]
+jupyterlab-lsp
+python-lsp-server[all]
