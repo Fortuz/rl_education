@@ -77,13 +77,6 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
-.jupyter/
-.local/
-.ipython/
-.npm/
-.yarn/
-.virtual_documents/
-.config/
 
 # IPython
 profile_default/
