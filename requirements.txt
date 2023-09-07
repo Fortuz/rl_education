@@ -4,7 +4,6 @@ seaborn
 tqdm
 gymnasium
 gymnasium[toy-text]
-jupyterlab-lsp
 python-lsp-server[all]
 jupyterlab-mathjax3
 ipywidgets
