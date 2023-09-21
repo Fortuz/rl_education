@@ -9,7 +9,6 @@ RUN pip install --quiet --no-cache-dir --requirement /tmp/requirements.txt
 ENV DIR="$HOME/work"
 WORKDIR $DIR
 ENV JUPYTER_ENABLE_LAB=yes
-RUN fix-permissions "$DIR"
 
 # Starting JupyterLab
 CMD jupyter lab \

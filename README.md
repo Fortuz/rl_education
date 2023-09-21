@@ -12,38 +12,36 @@ Run the following command to clone the repo:
 
 ### 2. Install Docker
 
-- **Windows, Mac**
-You can install Docker from this link: https://www.docker.com/products/docker-desktop/
-- **Linux**
-Use your distro's package manager. On Arch, you need to
-install the `docker` and `docker-desktop`<sup>AUR</sup> packages.
+- **Windows, Mac**: You can install Docker from this link: https://www.docker.com/products/docker-desktop/
+- **Linux**: Use your distro's package manager. On Arch, you need to install the `docker` and `docker-desktop`<sup>AUR</sup> packages.
   
 ### 3. Build the image
 
-Navigate to the project root directory, and use this command to build the image. (It takes a few minutes to complete)
-`docker build . -t notebook`
+Navigate to the project root directory, and run `docker build . -t rl`
+This command builds a new Docker image from the Dockerfile in this repo and names it *rl*.
 
 ### 4. Start the container
 
-Navigate to the project root directory and run this command:
-`docker run -p 8888:8888 --name notebook -v ${PWD}:/home/jovyan/work/ -it notebook`
+Navigate to the project root directory and run `docker run -p 8888:8888 --user ${uid}:${gid} --name rl -v ${PWD}:/home/jovyan/work/ -itd rl`
+This starts a new conatiner based on the image built above, with the following options:
+- `-p 8888:8888` connects the port `8888` of the container to the host machine
+- `--user ${uid}:${gid}` sets the container user to the local user to avoid permission issues
+- `--name rl` names the container *rl*
+- `-v ${PWD}:/home/jovyan/work/` binds your local folder (the project root) to the container's folder
+- `-itd` runs the container in the background
 
-The output will contain two links:
+### 5. Start JupyterLab
 
-![Links](assets/notebook_setup.png)
+Navigate to `localhost:8888` in your browser to start up JupyterLab.
 
-Use one of them to open the notebook. You can stop the container by pressing `Ctrl-C` twice, or clicking the stop button in the Docker Desktop app.
-
-### Starting the container after setup
+## Starting the container after setup
 
 To start the container, you have two options:
 
-- **CLI**
-Run `docker start --attach notebook` and use one of the links to
-open the notebook.
+- **CLI**: Run `docker start rl` and navigate to `localhost:8888`
 - **GUI**
   - Open the Docker Desktop app
   - Navigate to 'Containers' in the menu
-  - Click on 'notebook'
+  - Click on '*rl*'
   - Click the play button in the upper right corner
-  - Use one of the links in the console output to open the notebook
+  - Navigate to `localhost:8888`
