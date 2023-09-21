@@ -1,17 +1,17 @@
+# Selecting base image
 FROM jupyter/minimal-notebook:python-3.11
 
+# Installing required packages
 COPY --chown=${NB_UID}:${NB_GID} requirements.txt /tmp/
+RUN pip install --quiet --no-cache-dir --requirement /tmp/requirements.txt
 
-WORKDIR "${HOME}/work"
-
-RUN pip install --quiet --no-cache-dir --requirement /tmp/requirements.txt && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
-
-EXPOSE 8888
-
+# Additional configuration
+ENV DIR="$HOME/work"
+WORKDIR $DIR
 ENV JUPYTER_ENABLE_LAB=yes
+RUN fix-permissions "$DIR"
 
+# Starting JupyterLab
 CMD jupyter lab \
     --ip 0.0.0.0 \
     --port 8888 \
