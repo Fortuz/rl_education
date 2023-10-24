@@ -7,3 +7,5 @@ gymnasium[toy-text]
 python-lsp-server[all]
 jupyterlab-mathjax3
 ipywidgets
+setuptools==58.2.0
+shimmy[gym-v26]
