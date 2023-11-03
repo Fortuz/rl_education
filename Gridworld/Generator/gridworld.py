@@ -1,9 +1,8 @@
 import numpy as np
-import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw, ImageFont
 
 class Gridworld:
-    def __init__(self, state_types, rewards, q_table,
+    def __init__(self, state_types, rewards, q_table=None,
                  slip=None, gamma=1, step_reward=-0.01):
         self.state_types = state_types
         self.rewards = rewards
@@ -22,8 +21,13 @@ class Gridworld:
             forward_prob = 1 - self.slip['left'] - self.slip['right'] - self.slip['backward']
             self.slip['forward'] = forward_prob
 
+        if q_table is None:
+            self.q_table = np.zeros(self.state_types.shape + (4,))
+        else:
+            self.q_table = q_table
+
     def render(self, policy=False):
-        '''Render the gridworld with the current q-values'''
+        '''Render the gridworld with the current Q-values or policy'''
         step_size = 150
 
         # Initialize image
