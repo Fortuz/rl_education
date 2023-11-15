@@ -9,3 +9,5 @@ jupyterlab-mathjax3
 ipywidgets
 setuptools==58.2.0
 shimmy[gym-v26]
+torch
+torchvision
