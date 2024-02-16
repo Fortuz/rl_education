@@ -2,6 +2,8 @@
 FROM jupyter/minimal-notebook:python-3.11
 
 # Installing required packages
+USER root
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 -y
 USER jovyan
 COPY --chown=${NB_UID}:${NB_GID} requirements.txt /tmp/
 RUN pip install --no-cache-dir --requirement /tmp/requirements.txt
