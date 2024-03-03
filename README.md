@@ -3,6 +3,19 @@
 # rl_education
 Education materials for Reinforcement learning
 
+## Adaptation progress
+
+- [x] K-armed Bandit
+- [x] MDP
+- [ ] Dynamic Programming
+- [ ] Monte Carlo
+- [ ] Temporal Difference
+- [ ] n-step TD
+- [ ] Planning and Learning
+- [ ] Function Approximation
+- [ ] On-policy Control
+- [ ] Off-policy Control
+
 ## Setup
 
 ### 1. Clone the repository
