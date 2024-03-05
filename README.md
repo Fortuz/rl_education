@@ -7,7 +7,7 @@ Education materials for Reinforcement learning
 
 - [x] K-armed Bandit
 - [x] MDP
-- [ ] Dynamic Programming
+- [x] Dynamic Programming
 - [ ] Monte Carlo
 - [ ] Temporal Difference
 - [ ] n-step TD
