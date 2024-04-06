@@ -17,6 +17,7 @@ RUN rm -r /tmp/gym-maze/
 ENV DIR="$HOME/work"
 WORKDIR $DIR
 ENV JUPYTER_ENABLE_LAB=yes
+ENV XDG_RUNTIME_DIR=/tmp
 
 # Starting JupyterLab
 CMD jupyter lab \
