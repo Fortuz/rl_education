@@ -10,7 +10,7 @@ Education materials for Reinforcement learning
 - [x] Dynamic Programming
 - [x] Monte Carlo
 - [x] Temporal Difference
-- [ ] n-step TD
+- [x] n-step TD
 - [ ] Planning and Learning
 - [ ] Function Approximation
 - [ ] On-policy Control
