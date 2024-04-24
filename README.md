@@ -11,7 +11,7 @@ Education materials for Reinforcement learning
 - [x] Monte Carlo
 - [x] Temporal Difference
 - [x] n-step TD
-- [ ] Planning and Learning
+- [x] Planning and Learning
 - [ ] Function Approximation
 - [ ] On-policy Control
 - [ ] Off-policy Control
