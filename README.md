@@ -12,7 +12,7 @@ Education materials for Reinforcement learning
 - [x] Temporal Difference
 - [x] n-step TD
 - [x] Planning and Learning
-- [ ] Function Approximation
+- [x] Function Approximation
 - [ ] On-policy Control
 - [ ] Off-policy Control
 
