@@ -13,7 +13,7 @@ Education materials for Reinforcement learning
 - [x] n-step TD
 - [x] Planning and Learning
 - [x] Function Approximation
-- [ ] On-policy Control
+- [x] On-policy Control
 - [ ] Off-policy Control
 
 ## Setup
