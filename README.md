@@ -1,7 +1,7 @@
 ![Logo](assets/logo.png)
 
-# rl_education
-Education materials for Reinforcement learning
+# Reinforcement Learning Course
+Education materials for a Reinforcement Learning Course. This course aims to go through some of the base concept of reinforcement learnig. Starting from the K-armed bandit problem, introducing the Markov Decision Process (MDP). Implementing Dynamic Programming, Monte Carlo and Temporal Differenc algorithms in a practical way. The core material follows the structure of the Sutton-Barton book 
 
 ## Adaptation progress
 
@@ -16,47 +16,11 @@ Education materials for Reinforcement learning
 - [x] On-policy Control
 - [ ] Off-policy Control
 
-## Setup
+## Installation
 
-### 1. Clone the repository
+The notebooks can be run directly online in google colab or offline in a docker container on a local machine. For the docker container installation see the guide.
 
-Run the following command to clone the repo:
-`git clone https://github.com/Fortuz/rl_education.git`
+## Colab links
 
-### 2. Install Docker
+[Lab 01: K-armed Bandit](https://colab.research.google.com/github/Fortuz/rl_education/blob/main/1.%20K-armed%20Bandit/k_armed_bandit.ipynb)
 
-- **Windows, Mac**: You can install Docker from this link: https://www.docker.com/products/docker-desktop/
-- **Linux**: Use your distro's package manager. On Arch, you need to install the `docker` and `docker-desktop`<sup>AUR</sup> packages.
-  
-### 3. Build the image
-
-Navigate to the project root directory, and run `docker build . -t rl`
-
-This command builds a new Docker image from the Dockerfile in this repo and names it `rl`.
-
-### 4. Start the container
-
-Navigate to the project root directory and run `docker run -p 8888:8888 --user ${uid}:${gid} --name rl -v ${PWD}:/home/jovyan/work/ -itd rl`
-
-This starts a new conatiner based on the image built above, with the following options:
-- `-p 8888:8888` connects the port `8888` of the container to the host machine
-- `--user ${uid}:${gid}` sets the container user to the local user to avoid permission issues
-- `--name rl` names the container `rl`
-- `-v ${PWD}:/home/jovyan/work/` binds your local folder (the project root) to the container's folder
-- `-itd` runs the container in the background
-
-### 5. Start JupyterLab
-
-Navigate to `localhost:8888` in your browser to start up JupyterLab.
-
-## Starting the container after setup
-
-To start the container, you have two options:
-
-- **CLI**: Run `docker start rl` and navigate to `localhost:8888`
-- **GUI**
-  - Open the Docker Desktop app
-  - Navigate to 'Containers' in the menu
-  - Click on `rl`
-  - Click the play button in the upper right corner
-  - Navigate to `localhost:8888`
