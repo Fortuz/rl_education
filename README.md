@@ -23,4 +23,27 @@ The notebooks can be run directly online in google colab or offline in a docker 
 ## Colab links
 
 [Lab 01: K-armed Bandit](https://colab.research.google.com/github/Fortuz/rl_education/blob/main/1.%20K-armed%20Bandit/k_armed_bandit.ipynb)
+[Lab 01 solution](https://colab.research.google.com/github/Fortuz/rl_education/blob/main/1.%20K-armed%20Bandit/k_armed_bandit_solution.ipynb)
 
+[Lab 02: Markov Decision Process](https://colab.research.google.com/github/Fortuz/rl_education/blob/main/2.%20MDP/gymnasium_basics.ipynb)
+
+[Lab 03: Dynamic Programming]()
+[Lab 03 solution]()
+
+[Lab 04: Monte Carlo]()
+[Lab 04 solution]()
+
+[Lab 05: Temporal Difference]()
+[Lab 05 solution]()
+
+[Lab 06: N-step TD]()
+[Lab 06 solution]()
+
+[Lab 07: Planning and Learning]()
+[Lab 07 solution]()
+
+[Lab 08: Function Approximation]()
+[Lab 08 solution]()
+
+[Lab 09: On-policy Control]()
+[Lab 09 solution]()
