@@ -9,6 +9,7 @@ The notebooks can be run directly online in google colab or offline in a docker 
 
 ## Colab links
 
+[Lecture 01 - Introduction](https://github.com/Fortuz/rl_education/blob/main/Lectures/RL_01_Intro.pdf) <br>
 [Lab 01: K-armed Bandit](https://colab.research.google.com/github/Fortuz/rl_education/blob/main/1.%20K-armed%20Bandit/k_armed_bandit.ipynb) <br>
 [Lab 01 solution](https://colab.research.google.com/github/Fortuz/rl_education/blob/main/1.%20K-armed%20Bandit/k_armed_bandit_solution.ipynb)
 
