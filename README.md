@@ -7,9 +7,26 @@ Education materials for a Reinforcement Learning Course. This course aims to go 
 
 The notebooks can be run directly online in google colab or offline in a docker container on a local machine. For the docker container installation see the [guide](https://github.com/Fortuz/rl_education/blob/main/assets/install.md).
 
-## Colab links
+## Material Links
+
+### Lectures
 
 [Lecture 01 - Introduction](https://github.com/Fortuz/rl_education/blob/main/Lectures/RL_01_Intro.pdf) <br>
+[Lecture 02 - Multi-armed Bandit](https://github.com/Fortuz/rl_education/blob/main/Lectures/RL_02_MultiArmedBandit.pdf) <br>
+[Lecture 03 - Markov Decision Processes](https://github.com/Fortuz/rl_education/blob/main/Lectures/RL_03_MDP.pdf) <br>
+[Lecture 04 - Dynamic Programming](https://github.com/Fortuz/rl_education/blob/main/Lectures/RL_04_Dynamic.pdf) <br>
+[Lecture 05 - Monte Carlo Methods](https://github.com/Fortuz/rl_education/blob/main/Lectures/RL_05_MonteCarlo.pdf) <br>
+[Lecture 06 - Temporal Difference](https://github.com/Fortuz/rl_education/blob/main/Lectures/RL_06_TemporalDifference.pdf) <br>
+[Lecture 07 - Temporal Difference](https://github.com/Fortuz/rl_education/blob/main/Lectures/RL_06_TemporalDifference.pdf) <br>
+[Lecture 08 - N-step Bootstarpping](https://github.com/Fortuz/rl_education/blob/main/Lectures/RL_08_Bootstrapping.pdf) <br>
+[Lecture 09 - Planning and Learning](https://github.com/Fortuz/rl_education/blob/main/Lectures/RL_09_PlanningAndLearning.pdf) <br>
+[Lecture 10 - Function Approximation](https://github.com/Fortuz/rl_education/blob/main/Lectures/RL_10_FunctionAppriximation.pdf) <br>
+[Lecture 11 - Eligibility Traces](https://github.com/Fortuz/rl_education/blob/main/Lectures/RL_11_EligibilityTraces.pdf) <br>
+
+[Lecture 12 - Review Quiz](https://github.com/Fortuz/rl_education/blob/main/Lectures/RL_12_ReviewQuizes.pdf) <br>
+
+### Labors
+
 [Lab 01: K-armed Bandit](https://colab.research.google.com/github/Fortuz/rl_education/blob/main/1.%20K-armed%20Bandit/k_armed_bandit.ipynb) <br>
 [Lab 01 solution](https://colab.research.google.com/github/Fortuz/rl_education/blob/main/1.%20K-armed%20Bandit/k_armed_bandit_solution.ipynb)
 
