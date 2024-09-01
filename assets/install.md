@@ -1,17 +1,3 @@
-
-## Adaptation progress
-
-- [x] K-armed Bandit
-- [x] MDP
-- [x] Dynamic Programming
-- [x] Monte Carlo
-- [x] Temporal Difference
-- [x] n-step TD
-- [x] Planning and Learning
-- [x] Function Approximation
-- [x] On-policy Control
-- [ ] Off-policy Control
-
 ## Setup
 
 ### 1. Clone the repository
