@@ -11,3 +11,7 @@ setuptools==58.2.0
 shimmy[gym-v26]
 opencv-python-headless
 moviepy
+stable-baselines3
+ale-py 
+opencv-python
+ipykernel
