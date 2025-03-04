@@ -26,7 +26,7 @@ class Gridworld:
         else:
             self.q_table = q_table
 
-    def render(self, policy=False):
+    def render(self, q_table,policy=False,show_arrows = True):
         '''Render the gridworld with the current Q-values or policy'''
         step_size = 150
 
@@ -84,9 +84,10 @@ class Gridworld:
                 # Draw triangles/arrows and action values
                 if state_type == 0:
                     if policy:
-                        value = np.max(self.q_table[y, x])
-                        best_actions = np.where(self.q_table[y, x] == value)[0]
-
+                        value = np.max(q_table[y, x])
+                       
+                        best_actions = np.where(q_table[y, x] == value)[0]
+                     
                         if value >= 0:
                             fill = color_pos + (int(255 * value),)
                         else:
@@ -95,17 +96,18 @@ class Gridworld:
                         rectangle = [(x_pos, y_pos), (x_pos + step_size, y_pos + step_size)]
                         draw.rectangle(rectangle, outline='black', fill=fill)
 
-                        for action in best_actions:
-                            xy = [x_pos, y_pos] * 3
-                            arrow = [a + b for a, b in zip(xy, arrow_offsets[action])]
-                            draw.polygon(arrow, fill='white', outline='black')
+                        if show_arrows:
+                            for action in best_actions:
+                                xy = [x_pos, y_pos] * 3
+                                arrow = [a + b for a, b in zip(xy, arrow_offsets[action])]
+                                draw.polygon(arrow, fill='white', outline='black')
                         
                         text_xy = (x_pos + center, y_pos + center)
                         text = f'{value:.2f}'
                         draw.text(text_xy, text, anchor='mm', font=font_mid, fill='black')
                     else:
                         for action in range(4):
-                            value = self.q_table[y, x, action]
+                            value = q_table[y, x, action]
                             xy = [x_pos, y_pos] * 3
                             triangle = [a + b for a, b in zip(xy, triangle_offsets[action])]
                             if value >= 0:
@@ -147,53 +149,53 @@ class Gridworld:
         
         return image
     
-    def solve(self, theta=1e-18):
-        '''Use value iteration to find optimal policy and q-table'''
-        delta = theta
-        i_max = self.state_types.shape[0]
-        j_max = self.state_types.shape[1]
+    def render_policy(self, policy):
+        '''Render the gridworld with the given policy displayed as arrows and the underlying map.'''
+        step_size = 150
 
-        direction_translate = {
-            'left': -1,
-            'right': 1,
-            'backward': 2,
-            'forward': 0
-        }
-        direction_to_offset = {
-            0: (-1, 0),
-            1: (0, 1),
-            2: (1, 0),
-            3: (0, -1),
-        }
+        height = self.state_types.shape[0] * step_size + 1
+        width = self.state_types.shape[1] * step_size + 1
+        image = Image.new(mode='RGBA', size=(width, height), color=(255, 255, 255))
+        draw = ImageDraw.Draw(image)
 
-        delta = theta
-        while delta >= theta:
-            delta = 0
+        center = step_size / 2
+        arrow_offsets = {0: [center, step_size / 12,
+                            center - step_size / 10, step_size / 4, 
+                            center + step_size / 10, step_size / 4],
+                        1: [11 * step_size / 12, center,
+                            3 * step_size / 4, center - step_size / 10,
+                            3 * step_size / 4, center + step_size / 10],
+                        2: [center, 11 * step_size / 12,
+                            center - step_size / 10, 3 * step_size / 4,
+                            center + step_size / 10 , 3 * step_size / 4],
+                        3: [step_size / 12, center,
+                            step_size / 4, center - step_size / 10,
+                            step_size / 4, center + step_size / 10]
+                        }
 
-            for i in range(i_max):
-                for j in range(j_max):
-                    if self.state_types[i, j] == 0:
-                        for a in range(4):
-                            q_old = self.q_table[i, j, a]
-                            action_value = 0
-
-                            for slip_dir, prob in self.slip.items():
-                                if prob != 0:
-                                    actual_direction = (a + direction_translate[slip_dir]) % 4
-                                    i_off, j_off = direction_to_offset[actual_direction]
-                                    next_i = min(max(0, i + i_off), i_max - 1)
-                                    next_j = min(max(0, j + j_off), j_max - 1)
-                                    next_state = next_i, next_j
-
-                                    if self.state_types[next_state] == 2:
-                                        next_state = i, j
-
-                                    reward = self.rewards[next_state]
-                                    if reward == 0:
-                                        reward = self.step_reward
-                                    
-                                    next_state_value = np.max(self.q_table[next_state])
-                                    action_value += prob * (reward + self.gamma * next_state_value)
-
-                            self.q_table[i, j, a] = action_value
-                            delta = max(delta, abs(q_old - action_value))
+        y_end, x_end = policy.shape
+        for x in range(x_end):
+            for y in range(y_end):
+                x_pos = x * step_size
+                y_pos = y * step_size
+                state_type = self.state_types[y, x]
+                
+                if state_type == 0:
+                    rectangle = [(x_pos, y_pos), (x_pos + step_size, y_pos + step_size)]
+                    draw.rectangle(rectangle, outline='black', fill='white')
+                    
+                    action = policy[y, x]
+                    xy = [x_pos, y_pos] * 3
+                    arrow = [a + b for a, b in zip(xy, arrow_offsets[action])]
+                    draw.polygon(arrow, fill='black', outline='black')
+                elif state_type == 1:
+                    reward = self.rewards[y, x]
+                    color = (12, 107, 55) if reward > 0 else (235, 68, 44)
+                    rectangle = [(x_pos, y_pos), (x_pos + step_size, y_pos + step_size)]
+                    draw.rectangle(rectangle, outline='black', fill=color)
+                else:
+                    rectangle = [(x_pos, y_pos), (x_pos + step_size, y_pos + step_size)]
+                    draw.rectangle(rectangle, outline='black', fill='lightgrey')
+        
+        del draw
+        return image
